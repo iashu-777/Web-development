@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Images</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <img width="230" src="image.jpg" alt="Bus image">
+    <!--use of alt is if image.jpg is not present in source or server then it 
+    gives the alt of it , so user can get the idea of source image that what it
+    will be -->
+    <!--width attribute is in pixel in html-->
+    <!--if you want to automatically adjust height just only type width-->
+    <br><!--line break-->
+    <table> <!--table tag-->
+        <caption>employee details</caption> <!--caption tag-->
+
+        <!--headers-->
+        <thead>
+            <tr> <!--table row-->
+                <th>Name</th> <!--table heading-->
+                <th>Designation</th>
+                <th>favourite language</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <!--data-->
+            <tr>
+                <td>ashish</td> <!--table data-->
+                <td>programmer</td>
+                <td>c++</td>
+            </tr>
+            <tr>
+                <td>abhishesk</td> <!--table data-->
+                <td>programmer</td>
+                <td>python</td>
+            </tr>
+            <tr>
+                <td>arman</td> <!--table data-->
+                <td>programmer</td>
+                <td>java</td>
+            </tr>
+            <tr>
+                <td>aryan</td> <!--table data-->
+                <td>programmer</td>
+                <td>python</td>
+            </tr>
+            <tr>
+                <td colspan="2">aman</td>
+                <!-- colspan means ab aman 2 column ki jagah lega-->
+                <td rowspan="2">c++</td>
+            </tr>
+            <tr>
+                <td colspan="2">rohan </td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <td>aryan</td> <!--table data-->
+            <td>programmer</td>
+            <td>python</td>
+        </tfoot>
+
+    </table>
+
+
+    <!--unordered list-->
+    <ul type="square">
+        <li>ashish</li>
+        <li>aman</li>
+        <li>aryan</li>
+        <li>abhishesk</li>
+    </ul>
+    <ol type="i">
+        
+        <li>ashish</li>
+        <li>aman</li>
+        <li>aryan</li>
+        <li>abhishesk</li>
+
+    </ol>
+
+    <dl>
+        <!--definition list-->
+        <dt>HTML</dt> <!--definition term-->
+        <dd>Hyper text markup langauge : The standard
+            langauage for creating web pages
+        </dd>
+        <dt>CSS</dt>
+        <dd>Cascading Style Sheets : A stylesheet langauge used for describing
+            the look and formatting of a document written in HTML
+        </dd>
+    </dl>
+</body>
+
+</html>
