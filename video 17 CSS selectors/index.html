@@ -31,7 +31,19 @@
             margin: 0;
             padding: 0;
         }
-
+        /* pseudo selector */
+        a:visited{
+            color: yellow;
+        }
+        a:link{
+            color: green;
+        }
+        a:active{
+             background-color: red;
+        }
+        a:hover{
+            background-color: yellow;
+        }
     </style>
 </head>
 <body>
@@ -46,5 +58,7 @@
     <div id="green">
         i am another div 
     </div>
+    <a href="https://www.google.com">Go to google</a>
+    <a href="https://www.quora.com">Go to quora</a>
 </body>
 </html>
