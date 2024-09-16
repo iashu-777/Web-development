@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS selectors</title>
+    <style>
+        /*element selector*/
+        div{
+            /* background-color: red; */
+        }
+        /* class selector */
+        .red{
+            background-color: red;
+        }
+        #green{
+            background-color: green;
+        }
+        /* child selector */
+        div>p{/*  div ke andar , paragraph me changes kr rahe */
+            color: blue;
+            background-color: brown;
+        }
+        /* descendent selector */
+        div p{/*  div ke andar , paragraph  hona chaiye ,chahein wo kiske bhi through ho*/
+            color: blue;
+            background-color: brown;
+        }
+        /* universal selector */
+        *{ /*means saare element ki margin zero aur padding zero kar do*/
+            margin: 0;
+            padding: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="red">
+        I am a div 
+        <article>
+            <p>I am a para inside div</p>
+        </article>
+    </div>
+
+    <div id="green">
+        i am another div 
+    </div>
+</body>
+</html>
