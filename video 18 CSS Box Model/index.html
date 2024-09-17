@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Boxmodel</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box /*ye property hame saare boxes me lagani hai*/
+        {
+            background-color: aqua;
+        }
+        .box1{
+             color: yellow;
+             padding: 10px;
+             margin: 5px;
+             /* hamara color padding wale area me rahega , margin wale area me nai rahega */
+             border: 2px solid blue;
+             height: 200px;
+             box-sizing: border-box; /*  means ye jo 200 height batai hai wo content border aur padding ko include karke hai */
+        }
+        /* calculating total dimension of the element 
+        total width=width+left padding+right padding +left border +right border +left margin +right margin
+        total height=height+top padding+bottom padding+top border+bottom border+top margin+bottom margin */
+
+        .box2{
+            color:red
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1">I am a box 1</div>
+    <!-- ek element ko ek se zyada classes de sakte hai   -->
+    <div class="box box2">I am a box 2</div>
+</body>
+</html>
