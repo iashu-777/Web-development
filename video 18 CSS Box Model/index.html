@@ -16,11 +16,12 @@
         .box1{
              color: yellow;
              padding: 10px;
-             margin: 5px;
+             margin: 35px;
              /* hamara color padding wale area me rahega , margin wale area me nai rahega */
              border: 2px solid blue;
              height: 200px;
              box-sizing: border-box; /*  means ye jo 200 height batai hai wo content border aur padding ko include karke hai */
+             /* khaali height ka matlab hota hai element ki height */
         }
         /* calculating total dimension of the element 
         total width=width+left padding+right padding +left border +right border +left margin +right margin
@@ -28,7 +29,14 @@
 
         .box2{
             color:red
+            padding: 10px;
+            margin: 25px;
+            border: 2px solid black;
+            height: 200px;
+            box-sizing: border-box; 
         }
+        /* margin collapse- means do element ki margin overlap ho rahi hai to maximum margin ek baar
+        lagegi */
     </style>
 </head>
 <body>
