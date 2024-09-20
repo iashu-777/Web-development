@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* the specificity of this selector is 1 */
+        h1{
+            color: aqua;
+        }
+        /* the specificity of this selector is 1+10=11 */
+        h1.yellow{
+            color: yellow;
+        }
+        /* the specificity of this selector is 10 */
+        .cred{
+            color: red;
+        }
+        /* the specificity of this selector is 10 */
+        .cpurple{
+            color: purple;
+        }
+        h1{
+            color: aqua !important ;
+            /* important make speicificity 10000 */
+        }
+        this is the example of attribute selector 
+        /* the specificity of this selector is 10  */
+        /* [data-x=a]{
+            background-color: red;
+        } */
+
+        /* the specificity of this selector is 1+10(class)+10(class)+10(attribute selector)+10(pseudo class) =41 */
+         a.harryclass.rohan-class[href]:hover{
+            color: blueviolet;
+         }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 style="color: blue;" class="yellow cred cpurple" data-x="a">CSS Specificity</h1>
+
+        <!-- order of Specificity
+        inline style > ID selector>Class or attribute selector >element selector>Universal selector
+         -->
+
+        <!-- cascade algorithm had four stages
+        1)position and order of appearance
+        2)Specificity
+        3)origin
+        4)importance -->
+
+    </div>
+</body>
+</html>
