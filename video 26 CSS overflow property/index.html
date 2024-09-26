@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overflow</title>
+    <style>
+        .box{
+            width: 70vw;
+            height: 20vh;
+            border: 2px solid black;
+            
+            overflow: auto; /*  by this we have fix that overflow , agar overflow ho to scroll bar show hoga, aur nai hoga to overflow to scroll nai ayega*/
+            
+             /*overflow: scroll; by this hamesa scroll bar pada rahega*/ 
+
+            /*white-space: nowrap;  vertically text nai girega , sirf horizontally hi ayega*/
+
+            /*overflow: hidden;*/
+
+            /* overflow:clip by this we can diable scrolling programatically*/
+
+            text-overflow: ellipsis; /*isse dot dot a jayega last me */
+
+            /*by this we can apply overflow property individually overflow-x: hidden;
+            overflow-y: auto;*/
+            
+
+            /*we can also write above expression with shorthand 
+             */overflow: auto hidden
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        I am a good boy and i love to do coding Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae adipisci nobis et impedit perferendis suscipit.
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque debitis nostrum libero doloremque quibusdam consequuntur, blanditiis omnis eum, cum incidunt, magnam aut nihil sed maiores autem deserunt suscipit eos assumenda! Tempora veritatis maxime voluptas quae voluptates mollitia quisquam accusantium, in vitae doloribus esse quas quasi pariatur vel cupiditate a repellendus?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem porro quos cupiditate, esse, repudiandae illum illo autem eveniet rerum quod cum unde necessitatibus quidem sapiente dolorem amet alias enim, atque magnam fugiat perspiciatis? Vero quisquam provident, ipsum velit ut aliquid aliquam at incidunt rerum eveniet tempora minus accusantium veniam ullam cum dicta autem dolores, quibusdam inventore pariatur! Ea pariatur modi corrupti nisi nihil enim illo quibusdam delectus blanditiis numquam non officiis impedit eveniet nesciunt, veniam repellat beatae, velit tempore doloremque est maxime fugit. Excepturi incidunt porro magnam, sit, quisquam ducimus et consequuntur sint sapiente numquam mollitia assumenda voluptatibus corrupti!
+
+    </div>
+</body>
+</html>
