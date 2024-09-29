@@ -27,7 +27,7 @@ function removeSocketFromWaitingPeriod(socket) {
   foreachLoop.forEach(element => {
     const index = waiting[element].indexOf(socket);
     if (index > -1) {
-    waiting[element].splice(index, 1);
+      waiting[element].splice(index, 1);
     }
   });
 }
@@ -41,9 +41,19 @@ function FireonDisConnect(socket) {
   fireTotalPlayers();
 }
 
+function initialsetupMatch(opponentId, socketId) {
+  players[opponentId].emit("match_made", "w");
+  players[socketId].emit("match_made", "b");
+}
+
 function HandlePlayRequest(socket, time) {
 
-  if(waiting[time].length>0){
+  if (waiting[time].length > 0) {
+    const opponentId = waiting[time].splice(0, 1)[0];
+    matches[time].push({
+      [opponentId]: socket.id,
+    });
+    initialsetupMatch(opponentId,socket.id);
     return;
   }
 
@@ -54,7 +64,7 @@ function HandlePlayRequest(socket, time) {
 
 function FireOnConnected(socket) {
   socket.on('want_to_play', function (timer) {
-    
+
     HandlePlayRequest(socket, timer);
     console.log(waiting);
   });

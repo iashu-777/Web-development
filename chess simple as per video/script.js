@@ -7,19 +7,25 @@ var game = new Chess()
 var $status = $('#status')
 var $fen = $('#fen')
 var $pgn = $('#pgn')
+let c_player = null;
 
-function onDragStart (source, piece, position, orientation) {
+function onDragStart(source, piece, position, orientation) {
+
+  if (game.turn() != c_player) {
+    return false;
+  }
+
   // do not pick up pieces if the game is over
   if (game.game_over()) return false
 
   // only pick up pieces for the side to move
   if ((game.turn() === 'w' && piece.search(/^b/) !== -1) ||
-      (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
+    (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
     return false
   }
 }
 
-function onDrop (source, target) {
+function onDrop(source, target) {
   // see if the move is legal
   var move = game.move({
     from: source,
@@ -35,11 +41,11 @@ function onDrop (source, target) {
 
 // update the board position after the piece snap
 // for castling, en passant, pawn promotion
-function onSnapEnd () {
+function onSnapEnd() {
   board.position(game.fen())
 }
 
-function updateStatus () {
+function updateStatus() {
   var status = ''
 
   var moveColor = 'White'
@@ -83,21 +89,36 @@ board = Chessboard('myBoard', config)
 
 updateStatus()
 
-function handleButtonClick(event){
-  const timer=Number(event.target.getAttribute('data-time'));
-  socket.emit('want_to_play',timer)
+function handleButtonClick(event) {
+  const timer = Number(event.target.getAttribute('data-time'));
+  socket.emit('want_to_play', timer);
+  $('#main-element').hide();
+  $('#waiting_text_p').show();
 }
 
-document.addEventListener('DOMContentLoaded',function(){
-  const buttons=document.getElementsByClassName('timer-button');
-  for(let index=0;index<buttons.length;index++){
-    const button=buttons[index];
-    button.addEventListener('click',handleButtonClick)
+document.addEventListener('DOMContentLoaded', function () {
+  const buttons = document.getElementsByClassName('timer-button');
+  for (let index = 0; index < buttons.length; index++) {
+    const button = buttons[index];
+    button.addEventListener('click', handleButtonClick)
   }
-  });
+});
 
-  const socket=io('http://localhost:3000');
-  
-  socket.on('total_players_count_change',function(totalPlayersCount){
-    $('#total_players').html('Total Players: '+totalPlayersCount) 
-  })
+const socket = io('http://localhost:3000');
+
+socket.on('total_players_count_change', function (totalPlayersCount) {
+  $('#total_players').html('Total Players: ' + totalPlayersCount)
+})
+
+socket.on("match_made", (color) => {
+  // alert("You are playing as " + color)
+  c_player = color;
+  $('#main-element').show();
+  $('#waiting_text_p').hide();
+  const currentPlayer = color === 'b' ? 'Black' : 'White';
+  $('#buttonsParent').html("<p id='youArePlayingAs'>You are Playing as " + currentPlayer + "</p>");
+  game.reset();
+  board.clear();
+  board.start();
+  board.orientation(currentPlayer.toLowerCase());
+})
