@@ -34,8 +34,8 @@ function onDrop(source, target) {
   })
 
   // illegal move
-  if (move === null) return 'snapback'
-
+  if (move === null) return 'snapback';
+socket.emit('sync_state',game.fen(),game.turn());
   updateStatus()
 }
 
@@ -121,4 +121,10 @@ socket.on("match_made", (color) => {
   board.clear();
   board.start();
   board.orientation(currentPlayer.toLowerCase());
+});
+
+socket.on('sync_state_from_server',function(fen,turn){
+  game.load(fen);
+  game.setTurn(turn);
+  board.position(fen);
 })
