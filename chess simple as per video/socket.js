@@ -41,16 +41,23 @@ function FireonDisConnect(socket) {
   fireTotalPlayers();
 }
 
-function initialsetupMatch(opponentId, socketId) {
+function initialsetupMatch(opponentId, socketId,time) {
 
-  players[opponentId].emit("match_made", "w");
-  players[socketId].emit("match_made", "b");
+  players[opponentId].emit("match_made", "w",time);
+  players[socketId].emit("match_made", "b",time);
 
-  players[opponentId].on('sync_state',function(fen,turn){
- players[socketId].emit('sync_state_from_server',fen,turn);
+  players[opponentId].on('sync_state', function (fen, turn) {
+    players[socketId].emit('sync_state_from_server', fen, turn);
   });
-   players[socketId].on('sync_state',function(fen,turn){
-    players[opponentId].emit('sync_state_from_server',fen,turn);
+  players[socketId].on('sync_state', function (fen, turn) {
+    players[opponentId].emit('sync_state_from_server', fen, turn);
+
+  });
+  players[opponentId].on('game_over', function (winner) {
+    players[socketId].emit('game_over_from_server', winner);
+  });
+  players[socketId].on('game_over', function (winner) {
+    players[opponentId].emit('game_over_from_server', winner);
 
   });
 }
@@ -62,7 +69,7 @@ function HandlePlayRequest(socket, time) {
     matches[time].push({
       [opponentId]: socket.id,
     });
-    initialsetupMatch(opponentId,socket.id);
+    initialsetupMatch(opponentId, socket.id,time);
     return;
   }
 
