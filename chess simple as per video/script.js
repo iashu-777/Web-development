@@ -85,7 +85,7 @@ updateStatus()
 
 function handleButtonClick(event){
   const timer=Number(event.target.getAttribute('data-time'));
-  alert(timer);
+  socket.emit('want_to_play',timer)
 }
 
 document.addEventListener('DOMContentLoaded',function(){
@@ -97,4 +97,7 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   const socket=io('http://localhost:3000');
-  console.log(socket);
+  
+  socket.on('total_players_count_change',function(totalPlayersCount){
+    $('#total_players').html('Total Players: '+totalPlayersCount) 
+  })

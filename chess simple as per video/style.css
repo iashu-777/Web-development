@@ -9,7 +9,13 @@ body{
     align-items: center;
     justify-content: center;
     gap: 80px;
-
+}
+#total_players {
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    font-weight: 700;
+    font-size: 18px;
 }
 .timer-button{
     border: none;
