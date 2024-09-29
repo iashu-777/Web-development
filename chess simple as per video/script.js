@@ -167,6 +167,8 @@ socket.on("match_made", (color,time) => {
   $('#waiting_text_p').hide();
   const currentPlayer = color === 'b' ? 'Black' : 'White';
   $('#buttonsParent').html("<p id='youArePlayingAs'>You are Playing as " + currentPlayer + "</p><p id='timerDisplay'></p>");
+
+  $('#buttonsParent').addClass('flex-col');
   game.reset();
   board.clear();
   board.start();
@@ -179,6 +181,7 @@ socket.on("match_made", (color,time) => {
   }
   else{
     timerInstance=null;
+    $('#timerDisplay').html("10:00");
   }
 });
 
@@ -188,7 +191,7 @@ socket.on('sync_state_from_server', function (fen, turn) {
   board.position(fen);
 
   if(timerInstance){
-    timerInstance.pause();
+    timerInstance.resume();
   }
   else{
     timerInstance= startTimer(Number(currentMatchTime) * 60, "timerDisplay", function () { alert("Done!"); });
