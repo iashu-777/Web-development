@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Chess Game</title>
-    <link rel="stylesheet" href="./style.css">
-
+    <link rel="stylesheet" href="./style.css" id="theme-style">  <!-- Default is light mode -->
 </head>
 
 <body>
-    <!-- partial:index.partial.html -->
+    <div id="controls">
+        <button id="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    </div>
+
     <div id="game">
         <div class='cellprefix'>8</div>
         <div class='gamecell' id='1_8'></div>
@@ -94,12 +96,22 @@
         <div class='cellprefix'>h</div><br>
         <div id='turn'>It's Whites Turn!</div>
     </div>
-    <!-- partial -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script src="./script.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./script.js"></script>
+    <script>
+        // Toggle between light and dark themes
+        function toggleTheme() {
+            const themeLink = document.getElementById("theme-style");
+            const currentTheme = themeLink.getAttribute("href");
+
+            if (currentTheme.includes("light.css")) {
+                themeLink.setAttribute("href", "./dark.css");
+            } else {
+                themeLink.setAttribute("href", "./light.css");
+            }
+        }
+    </script>
 </body>
 
 </html>
-
-
