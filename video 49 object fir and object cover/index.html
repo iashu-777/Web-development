@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Object fit</title>
+    <style>
+        .container{
+            height: 634px;
+            width: 688px;
+            border: 2px solid black;
+            /* background-color: azure; */
+            background-image: url("https://imgd.aeplcdn.com/1056x594/n/cw/ec/129743/duke-200-right-front-three-quarter.jpeg?isig=0&q=80");
+            background-position: center;
+        }
+        img{
+            object-fit: scale-down;
+            object-position: top right;
+            height: 100%;
+            width: 100%;
+            
+        }
+    </style>
+</head>
+<body>
+    <div style="background-color: black;" class="container">
+<!-- <img src="https://imgd.aeplcdn.com/1056x594/n/cw/ec/129743/duke-200-right-front-three-quarter.jpeg?isig=0&q=80" alt=""> -->
+    </div>
+</body>
+</html>
